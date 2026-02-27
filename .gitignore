@@ -1,0 +1,23 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+
+# Environment variables
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Mac files
+.DS_Store
+
+# Model files
+*.pth
+*.h5
+*.pkl
+
+# Large folders (if needed)
+models/
