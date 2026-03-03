@@ -28,6 +28,9 @@ From `ThesisFlow/backend`:
 - `uvicorn main:app --reload --port 8000`
 
 ## API
+### `GET /health`
+Checks Ollama/model readiness, memory count, and RAG index stats.
+
 ### `POST /upload-pdf`
 Uploads a PDF and indexes it into RAG.
 
@@ -41,3 +44,12 @@ Body:
   "use_rag": true
 }
 ```
+
+### `GET /memory/recent?limit=20`
+Returns recent persisted memories.
+
+### `DELETE /memory`
+Clears all persisted memory rows.
+
+### `GET /rag/stats`
+Returns vector/chunk counts and index metadata.

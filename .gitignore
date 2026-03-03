@@ -21,3 +21,12 @@ venv/
 
 # Large folders (if needed)
 models/
+
+# Runtime artifacts
+backend/*.db
+backend/*.index
+backend/vector.meta.json
+backend/temp_*.pdf
+backend/uploaded_papers/
+frontend/.next/
+frontend/node_modules/

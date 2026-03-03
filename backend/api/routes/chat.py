@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
@@ -23,10 +23,12 @@ def chat_stream_route(req: ChatRequest, db: Session = Depends(get_db)):
     if not query:
         return StreamingResponse(iter(["Message required."]), media_type="text/plain")
 
-    query_embedding = embed_texts([query])[0]
-
-    contexts = search(query_embedding) if req.use_rag else []
-    memories = search_memory(db, query_embedding, k=5) if req.use_memory else []
+    try:
+        query_embedding = embed_texts([query])[0]
+        contexts = search(query_embedding) if req.use_rag else []
+        memories = search_memory(db, query_embedding, k=5) if req.use_memory else []
+    except Exception as exc:
+        raise HTTPException(status_code=502, detail=f"Backend dependency failed: {exc}") from exc
 
     context_block = "\n".join([f"[DOC {i+1}] {c}" for i, c in enumerate(contexts)])
     memory_block = "\n".join(

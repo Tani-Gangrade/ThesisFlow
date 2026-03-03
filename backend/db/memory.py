@@ -54,3 +54,13 @@ def search_memory(db: Session, query_embedding: list[float], k: int = 5):
 
     scored.sort(key=lambda x: x[0], reverse=True)
     return [m for _, m in scored[:k]]
+
+
+def clear_memory(db: Session) -> int:
+    deleted = db.query(Memory).delete()
+    db.commit()
+    return deleted
+
+
+def memory_count(db: Session) -> int:
+    return db.query(Memory).count()

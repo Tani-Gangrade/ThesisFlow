@@ -40,6 +40,7 @@ index, chunks_store, _meta = _load_index()
 def store_embeddings(chunks, embeddings):
     global chunks_store
     global index
+    global _meta
 
     vectors = np.array(embeddings, dtype="float32")
     vectors = _normalize(vectors)
@@ -62,6 +63,7 @@ def store_embeddings(chunks, embeddings):
     pickle.dump(chunks_store, open(CHUNKS_FILE, "wb"))
     with open(META_FILE, "w", encoding="utf-8") as f:
         json.dump({"dimension": dimension}, f)
+    _meta = {"dimension": dimension}
 
 
 def search(query_embedding, k=5):
@@ -73,3 +75,14 @@ def search(query_embedding, k=5):
     labels, _distances = index.knn_query(vector, k=k)
 
     return [chunks_store[i] for i in labels[0] if i < len(chunks_store)]
+
+
+def rag_stats() -> dict:
+    vector_count = int(index.get_current_count()) if index is not None else 0
+    return {
+        "chunks": len(chunks_store),
+        "vectors": vector_count,
+        "dimension": _meta.get("dimension"),
+        "index_file": INDEX_FILE,
+        "meta_file": META_FILE,
+    }
