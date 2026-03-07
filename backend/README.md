@@ -1,4 +1,4 @@
-# ThesisFlow Backend
+# ThesisFlow Backend (Memory Augmented Research Assistent)
 
 This backend runs fully locally and free:
 - FastAPI API server
