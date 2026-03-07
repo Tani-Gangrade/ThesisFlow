@@ -1,4 +1,4 @@
-# ThesisFlow Backend (Local-First MARA)
+# ThesisFlow Backend
 
 This backend runs fully locally and free:
 - FastAPI API server
