@@ -25,12 +25,6 @@ It lets you upload research papers, index them with retrievel, and chat with a p
 - PDF ingestion pipeline
 - Streaming responses
 
-## How is this Different?
-Traditional LLM apps are stateless and limited by context windows. ThesisFlow addresses that by combining:
-- persistent memory
-- external knowledge retrieval
-- local model execution
-
 ## Current Limitations
 - Designed primarily for local use
 - Depends on locally running Ollama models
