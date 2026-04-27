@@ -13,6 +13,8 @@ It lets you upload research papers, index them with retrievel, and chat with a p
   - persistent memory
 - Stream responses through a simple chat interface
 
+---
+
 ## 💻 Tech Stack
 - Streamlit for the chat interface
 - FastAPI for the backend API
