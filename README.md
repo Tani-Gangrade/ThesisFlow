@@ -2,7 +2,7 @@
 **ThesisFlow** is a local-first **Memory Augmented Research Assistant** for academic workflows.
 It lets you upload research papers, index them with retrievel, and chat with a personal research assistant that remembers context across interactions. 
 
----
+----
 
 ## ❓ What It Does 
 - Upload PDF papers and extract text
@@ -13,7 +13,7 @@ It lets you upload research papers, index them with retrievel, and chat with a p
   - persistent memory
 - Stream responses through a simple chat interface
 
----
+----
 
 ## 💻 Tech Stack
 - Streamlit for the chat interface
@@ -21,6 +21,8 @@ It lets you upload research papers, index them with retrievel, and chat with a p
 - Ollama for local model inference
 - SQLite for persistent memory
 - pdfplumber for PDF text extraction
+
+----
 
 ## 🧩 Features
 - No paid API required
