@@ -22,7 +22,7 @@ It lets you upload research papers, index them with retrievel, and chat with a p
 - SQLite for persistent memory
 - pdfplumber for PDF text extraction
 
-----
+-----
 
 ## 🧩 Features
 - No paid API required
