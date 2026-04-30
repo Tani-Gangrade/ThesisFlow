@@ -31,7 +31,7 @@ It lets you upload research papers, index them with retrievel, and chat with a p
 - PDF ingestion pipeline
 - Streaming responses
 
-----
+-----
 
 ## 🎯 Current Limitations
 - Designed primarily for local use
@@ -39,6 +39,6 @@ It lets you upload research papers, index them with retrievel, and chat with a p
 - Cloud deployment is possible, but not fully practical for free with the current architecture
 - Uses local file-based storage for PDFs and vector index
 
-----
+-----
 
 
