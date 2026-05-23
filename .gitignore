@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+backend/venv/
+
+# Environment files
+.env
+backend/.env
+
+# Runtime artifacts
+backend/*.db
+backend/*.index
+backend/vector.meta.json
+backend/chunks.pkl
+backend/temp_*.pdf
+backend/uploaded_papers/
+
