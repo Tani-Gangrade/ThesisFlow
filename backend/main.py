@@ -1,3 +1,5 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi import Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -12,15 +14,10 @@ from api.routes.ops import router as ops_router
 from agent.ollama_client import assert_ollama_ready
 from db.database import init_db
 
-app = FastAPI()
 logger = logging.getLogger("thesisflow")
 
-app.include_router(ingest_router)
-app.include_router(chat_router)
-app.include_router(ops_router)
-
-@app.on_event("startup")
-def startup():
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
     init_db()
     try:
         assert_ollama_ready()
@@ -28,6 +25,14 @@ def startup():
         raise RuntimeError(
             "Ollama is not reachable. Start Ollama at OLLAMA_BASE_URL before running backend."
         ) from exc
+    yield
+
+
+app = FastAPI(lifespan=lifespan)
+
+app.include_router(ingest_router)
+app.include_router(chat_router)
+app.include_router(ops_router)
 
 app.add_middleware(
     CORSMiddleware,

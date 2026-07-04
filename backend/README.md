@@ -1,4 +1,4 @@
-# ThesisFlow Backend (Memory Augmented Research Assistent)
+# ThesisFlow Backend (Memory Augmented Research Assistant)
 
 This backend runs fully locally and free:
 - FastAPI API server
@@ -6,26 +6,45 @@ This backend runs fully locally and free:
 - HNSWLIB for document retrieval (RAG)
 - SQLite for persistent memory
 
-## Prereqs
+## Prerequisites
 1. Install Ollama: https://ollama.com
 2. Pull models (one-time):
    - `ollama pull phi3`
    - `ollama pull nomic-embed-text`
 
-## Setup
-1. Create a Python virtualenv and install deps:
-   - `python -m venv venv`
-   - `source venv/bin/activate`
-   - `pip install -r ../requirements.txt`
+## Full Local App
+From the project root:
 
-2. (Optional) Configure models:
-   - `export OLLAMA_CHAT_MODEL=phi3`
-   - `export OLLAMA_EMBED_MODEL=nomic-embed-text`
-   - `export OLLAMA_BASE_URL=http://localhost:11434`
+```bash
+make setup
+make dev
+```
 
-## Run
-From `ThesisFlow/backend`:
-- `uvicorn main:app --reload --port 8000`
+This starts:
+
+- FastAPI backend at `http://127.0.0.1:8000`
+- Streamlit frontend at `http://127.0.0.1:8501`
+
+## Backend Only
+From the project root:
+
+```bash
+make backend
+```
+
+Or from `ThesisFlow/backend`:
+
+```bash
+../venv/bin/python -m uvicorn main:app --reload --port 8000
+```
+
+## Optional Model Configuration
+
+```bash
+export OLLAMA_CHAT_MODEL=phi3
+export OLLAMA_EMBED_MODEL=nomic-embed-text
+export OLLAMA_BASE_URL=http://localhost:11434
+```
 
 ## API
 ### `GET /health`
